@@ -1,0 +1,27 @@
+export const GET_ALL_CATEGORIES_REQUEST = "GET_ALL_CATEGORIES_REQUEST";
+export const GET_ALL_CATEGORIES_SUCCESS = "GET_ALL_CATEGORIES_SUCCESS";
+export const GET_ALL_CATEGORIES_FAILURE = "GET_ALL_CATEGORIES_FAILURE";
+
+export const CREATE_CATEGORIE_REQUEST = "CREATE_CATEGORIE_REQUEST";
+export const CREATE_CATEGORIE_SUCCESS = "CREATE_CATEGORIE_SUCCESS";
+export const CREATE_CATEGORIE_FAILURE = "CREATE_CATEGORIE_FAILURE";
+
+export const GET_CATEGORY_DETAIL_REQUEST = "GET_CATEGORY_DETAIL_REQUEST";
+export const GET_CATEGORY_DETAIL_SUCCESS = "GET_CATEGORY_DETAIL_SUCCESS";
+export const GET_CATEGORY_DETAIL_FAILURE = "GET_CATEGORY_DETAIL_FAILURE";
+
+export const getAllCategoriesRequest = () => {
+  return {
+    type: GET_ALL_CATEGORIES_REQUEST,
+  };
+};
+
+export const createCategorieRequest = (payload) => ({
+  type: CREATE_CATEGORIE_REQUEST,
+  payload,
+});
+
+export const getCategoryDetail = (payload) => ({
+  type: GET_CATEGORY_DETAIL_REQUEST,
+  payload,
+});

@@ -1,0 +1,23 @@
+
+
+#components-layout-demo-side .logo {
+    height: 32px;
+    background: lightblue;
+    margin: 16px;
+  }
+  
+  
+  .logo {
+    width: 10rem;
+    height: 3rem;
+    margin: 16px;
+    text-align: center;
+  }
+  
+  
+  .header-time {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right:5%;
+  }
