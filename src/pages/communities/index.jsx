@@ -49,7 +49,7 @@ class Communities extends Component {
         width: 150,
         key: "name",
         render: (text, data) => (
-          <Link to={`/communities/${data.slug}`}>{text}</Link>
+          <Link to={`/community/${data.slug}`}>{text}</Link>
         ),
       },
       {

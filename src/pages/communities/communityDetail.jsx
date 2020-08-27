@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import {
   getCommunityDetail,
   communityDetailClear,
+  updateCommunityRequest,
 } from "../../redux/communities/action";
-import { Form, Input } from "antd";
+import { Form, Input, Button } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import moment from "moment";
 import Avatar from "antd/lib/avatar/avatar";
@@ -23,9 +24,15 @@ class CommunityDetail extends Component {
       name: `${detailCommunity.name}`,
       slug: `${detailCommunity.slug}`,
       description: `${detailCommunity.description}`,
-      createdDate: `${moment(detailCommunity.createdDate).format("lll")}`,
+      createdDate: `${moment(detailCommunity.createdDate).format("LLL")}`,
     });
   }
+
+  onFinish = ({ description, name, slug }) => {
+    const values = { description, name, slug };
+    this.props.updateCommunity(values);
+  };
+
   render() {
     const formItemLayout = {
       labelCol: {
@@ -40,7 +47,7 @@ class CommunityDetail extends Component {
 
     const { detailCommunity } = this.props;
     return (
-      <Form ref={this.formRef} {...formItemLayout}>
+      <Form onFinish={this.onFinish} ref={this.formRef} {...formItemLayout}>
         <Form.Item key="name" name="name" label="Topluluk Adı">
           <Input placeholder="Topluluk Adı" />
         </Form.Item>
@@ -65,6 +72,13 @@ class CommunityDetail extends Component {
             src={detailCommunity && detailCommunity.logoPath}
             icon={<UserOutlined />}
           />
+          <Button
+            style={{ marginLeft: "3rem" }}
+            type="primary"
+            htmlType="submit"
+          >
+            Güncelle
+          </Button>
         </Form.Item>
       </Form>
     );
@@ -74,6 +88,7 @@ class CommunityDetail extends Component {
 const mapDispatchToProps = (dispatch) => ({
   getDetail: (payload) => dispatch(getCommunityDetail(payload)),
   clear: () => dispatch(communityDetailClear()),
+  updateCommunity: (payload) => dispatch(updateCommunityRequest(payload)),
 });
 
 const mapStateToProps = (state) => ({

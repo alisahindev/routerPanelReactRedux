@@ -57,8 +57,7 @@ const PutFormData = (endpoint, body = {}, token) => {
     method: "PUT",
     headers: {
       Accept: "application/json, text/javascript, */*; q=0.01",
-      Authorization: `Bearer ${readLocalStorage("token")}`,
-      // token,
+      Authorization: `Bearer ${readLocalStorage("loginData").token}`,
     },
     body: bodyAsFormData,
   };

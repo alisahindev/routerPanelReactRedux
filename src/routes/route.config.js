@@ -14,7 +14,6 @@ export const mainRoutes = [
   },
   {
     path: "/communities",
-    exact: true,
     isPrivate: true,
     component: Communities,
   },
@@ -27,7 +26,7 @@ export const mainRoutes = [
 
   {
     isPrivate: true,
-    path: "/communities/:slug",
+    path: "/community/:slug",
     component: communityDetail,
   },
   {
