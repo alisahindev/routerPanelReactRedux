@@ -28,7 +28,7 @@ export default class Navbar extends Component {
           </Menu.Item>
 
           <SubMenu key="sub1" icon={<UserOutlined />} title="Kullanıcılar">
-            <Menu.Item key="3">
+            <Menu.Item key="2">
               <Link to="/users">Tüm Kullanıcılar</Link>
             </Menu.Item>
           </SubMenu>
@@ -37,12 +37,12 @@ export default class Navbar extends Component {
             icon={<TeamOutlined />}
             title="Topluluk İşlemleri"
           >
-            <Menu.Item key="6">
+            <Menu.Item key="3">
               <Link to="/communities">Tüm Topluluklar</Link>
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<BarsOutlined />} title="Kategoriler">
-            <Menu.Item key="8">
+            <Menu.Item key="4">
               <Link to="/categories">Tüm Kategoriler</Link>
             </Menu.Item>
           </SubMenu>

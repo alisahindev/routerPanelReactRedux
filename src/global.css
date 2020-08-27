@@ -27,3 +27,7 @@
   .ant-card ant-card-bordered ant-card-hoverable{
     margin-top: 1rem !important;
   }
+
+ .ant-form-horizontal {
+    margin-top: 10vh;
+  }

@@ -1,14 +1,14 @@
 import Dashboard from "../pages/dashboard";
 import Communities from "../pages/communities";
 import categories from "../pages/categories";
-import communityDetail from "../pages/communities/communityDetail";
 import categoryDetail from "../pages/categories/components/categoryDetail";
 import users from "../pages/users";
+import communityDetail from "../pages/communities/communityDetail";
 
 export const mainRoutes = [
   {
-    path: "/dashboard",
     exact: true,
+    path: "/dashboard",
     isPrivate: true,
     component: Dashboard,
   },
@@ -38,7 +38,6 @@ export const mainRoutes = [
 
   {
     isPrivate: true,
-    exact: true,
     path: "/users",
     component: users,
   },
