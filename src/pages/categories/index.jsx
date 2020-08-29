@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Button } from "antd";
+import { Button } from "antd";
 import {
   getAllCategoriesRequest,
   createCategorieRequest,
@@ -7,33 +7,10 @@ import {
 import { connect } from "react-redux";
 import CreateCategoryModal from "./components/createCategoryModal";
 import { Link } from "react-router-dom";
+import { Card, Col, Row } from "antd";
 
-const columns = [
-  {
-    title: "İsim",
-    dataIndex: "displayName",
-    key: "name",
-  },
-  {
-    title: "Slug",
-    dataIndex: "slug",
-    key: "slug",
-  },
-  {
-    title: "İşlem",
-    key: "set",
-    render: (text, data) => {
-      return (
-        <Button type="primary">
-          <Link to={`/category/${data.slug}`}>İncele</Link>
-        </Button>
-      );
-    },
-  },
-];
 class Categories extends Component {
   state = {
-    categories: [],
     visible: false,
   };
 
@@ -48,11 +25,30 @@ class Categories extends Component {
   };
 
   render() {
-    const {
-      categories: { data },
-    } = this.props;
+    const { categories } = this.props;
     return (
       <>
+        <div className="site-card-wrapper">
+          <Row gutter={[16, 16]}>
+            {categories &&
+              categories.length > 0 &&
+              categories.map((category) => {
+                return (
+                  <Col span={8}>
+                    <Card
+                      style={{ borderRadius: "10px" }}
+                      title={category.displayName}
+                      bordered={false}
+                    >
+                      <Button type="primary">
+                        <Link to={`/category/${category.slug}`}>İncele</Link>
+                      </Button>
+                    </Card>
+                  </Col>
+                );
+              })}
+          </Row>
+        </div>
         <div>
           <Button
             onClick={() => this.setState({ visible: true })}
@@ -62,11 +58,7 @@ class Categories extends Component {
             Kategori Ekle
           </Button>
         </div>
-        <Table
-          dataSource={data && data.length > 0 && data}
-          columns={columns}
-          pagination={{ pageSize: 20 }}
-        />
+
         <CreateCategoryModal
           title="Kategori Olustur"
           onOk={this.onSubmit}
@@ -84,7 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  categories: state.allCategories,
+  categories: state.allCategories.data,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

@@ -31,6 +31,7 @@ class UserCardComponent extends Component {
           marginTop: "1rem",
           borderRadius: "1rem",
           backgroundColor: "#fff",
+          boxShadow: "1px 0px 12px 0px rgba(163,151,163,1)",
         }}
         cover={
           <Avatar

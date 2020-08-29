@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Modal from "antd/lib/modal/Modal";
-import { Input, Select } from "antd";
+import { Input, Select, Divider } from "antd";
 import { Option } from "antd/lib/mentions";
 import { connect } from "react-redux";
 import { getAllCategoriesRequest } from "../../../redux/categories/action";
@@ -38,12 +38,13 @@ class CreateCommunityModal extends Component {
         onOk={this.onSubmit}
         onCancel={onCancel}
       >
+        <Divider>Topluluk Adı</Divider>
         <Input
-          placeholder="Topluluk Adı"
+          placeholder="Topluluk adını girin"
           id="name"
           onChange={this.handleChange}
         />
-
+        <Divider>Kategori</Divider>
         <Select
           onChange={this.selectChange}
           id="catSlug"
@@ -55,9 +56,10 @@ class CreateCommunityModal extends Component {
               <Option value={category.slug}>{category.displayName}</Option>
             ))}
         </Select>
+        <Divider>Açıklama</Divider>
         <Input.TextArea
           id="description"
-          placeholder="Açıklama"
+          placeholder="Açıklama giriniz"
           onChange={this.handleChange}
         />
       </Modal>

@@ -39,12 +39,24 @@
   .ant-statistic-title{
     color:#fff
   }
+
+  Input{
+    border-radius: 5px !important;
+  }
+
+  Textarea{
+    border-radius: 5px !important;
+
+  }
   
   .dashboard-card:hover {
     box-shadow: 0px 20px 40px rgba(0,0,0,0.4);
   transform: scale(1.05,1.05);
   }
 
+  Button {
+    border-radius: 10px !important
+  }
 
   .card {
     border: 1px solid var(--color-three);

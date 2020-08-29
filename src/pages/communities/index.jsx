@@ -92,6 +92,7 @@ class Communities extends Component {
       <>
         <div>
           <Button
+            style={{ borderRadius: "10px" }}
             type="primary"
             className="table_up_button"
             onClick={() => this.setState({ visible: true })}
@@ -108,7 +109,7 @@ class Communities extends Component {
           onCancel={this.handlePreviewModalVisible}
         />
         <CreateCommunityModal
-          title="Topluluk Olustur"
+          title="Topluluk Oluştur"
           onOk={this.onSubmit}
           onCancel={() => this.setState({ visible: false })}
           visible={this.state.visible}
