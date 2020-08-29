@@ -9,6 +9,7 @@ import {
 import logo from "../images/saalla-5.png";
 import { withRouter, NavLink } from "react-router-dom";
 import "./index.css";
+import history from "../../history";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -17,9 +18,11 @@ class Navbar extends Component {
   state = {
     collapsed: false,
   };
+
   onCollapse = (collapsed) => {
     this.setState({ collapsed });
   };
+
   render() {
     return (
       <Sider
@@ -32,14 +35,22 @@ class Navbar extends Component {
             <img alt="logo" src={logo} style={{ width: "100%" }} />
           </NavLink>
         </div>
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            <NavLink to="/dashboard">Anasayfa</NavLink>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={[`${this.props.location.pathname}`]}
+          mode="inline"
+        >
+          <Menu.Item
+            key="/dashboard"
+            onClick={() => history.push("/dashboard")}
+            icon={<PieChartOutlined />}
+          >
+            <span>Anasayfa</span>
           </Menu.Item>
 
           <SubMenu key="sub1" icon={<UserOutlined />} title="Kullanıcılar">
-            <Menu.Item key="2">
-              <NavLink to="/users">Tüm Kullanıcılar</NavLink>
+            <Menu.Item key="/users" onClick={() => history.push("/users")}>
+              <span>Tüm Kullanıcılar</span>
             </Menu.Item>
           </SubMenu>
           <SubMenu
@@ -47,13 +58,19 @@ class Navbar extends Component {
             icon={<TeamOutlined />}
             title="Topluluk İşlemleri"
           >
-            <Menu.Item key="3">
-              <NavLink to="/communities">Tüm Topluluklar</NavLink>
+            <Menu.Item
+              key="/communities"
+              onClick={() => history.push("/communities")}
+            >
+              <span>Tüm Topluluklar</span>
             </Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" icon={<BarsOutlined />} title="Kategoriler">
-            <Menu.Item key="4">
-              <NavLink to="/categories">Tüm Kategoriler</NavLink>
+            <Menu.Item
+              key="/categories"
+              onClick={() => history.push("/categories")}
+            >
+              <span>Tüm Kategoriler</span>
             </Menu.Item>
           </SubMenu>
         </Menu>

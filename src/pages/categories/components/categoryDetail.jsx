@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getCategoryDetail } from "../../../redux/categories/action";
 import { connect } from "react-redux";
 import CategoryCard from "./categoryCard";
+import { Row } from "antd";
 
 class CategoryDetail extends Component {
   componentDidMount() {
@@ -12,12 +13,14 @@ class CategoryDetail extends Component {
     const { detailCategory } = this.props;
 
     return (
-      <div className="cardContent">
-        {detailCategory &&
-          detailCategory.length > 0 &&
-          detailCategory.map((category) => (
-            <CategoryCard detailCategory={category}></CategoryCard>
-          ))}
+      <div>
+        <Row gutter={[32, 32]}>
+          {detailCategory &&
+            detailCategory.length > 0 &&
+            detailCategory.map((category) => {
+              return <CategoryCard detailCategory={category}></CategoryCard>;
+            })}
+        </Row>
       </div>
     );
   }

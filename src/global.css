@@ -3,17 +3,8 @@
     margin-bottom: 10px;
     z-index: 1;
   }
-  .cardContent{ 
-    display: flex;
-    height: 100%;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  
-  .ant-card-meta {
-    margin:auto
-  }
+
+
   .ant-card-cover {
     text-align: -webkit-center;
   }
