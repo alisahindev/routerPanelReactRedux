@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Card, Avatar } from "antd";
-import { SettingOutlined } from "@ant-design/icons";
+import { SettingOutlined, EyeFilled } from "@ant-design/icons";
 import UserDetailDrawer from "./userDetailDrawer";
+import { Link } from "react-router-dom";
 
 const { Meta } = Card;
 
@@ -37,7 +38,13 @@ class UserCardComponent extends Component {
             }
           />
         }
-        actions={[<SettingOutlined onClick={this.showDrawer} key="setting" />]}
+        actions={[
+          <SettingOutlined onClick={this.showDrawer} key="setting" />,
+
+          <Link to={`post/${username}`}>
+            <EyeFilled key="setting" />
+          </Link>,
+        ]}
       >
         <Meta
           avatar={

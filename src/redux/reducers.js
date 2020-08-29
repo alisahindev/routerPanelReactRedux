@@ -7,6 +7,7 @@ import selectedCategory from "./categories/selectedCategoryReducer";
 import users from "./users/reducer";
 import selectedUser from "./users/selectedUserReducer";
 import auth from "./auth/reducer";
+import userPosts from "./posts/reducer";
 
 export default (history) =>
   combineReducers({
@@ -18,4 +19,5 @@ export default (history) =>
     userDetail: selectedUser,
     allUsers: users,
     auth,
+    userPosts,
   });

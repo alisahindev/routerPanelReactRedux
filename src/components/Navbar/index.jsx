@@ -7,13 +7,13 @@ import {
   BarsOutlined,
 } from "@ant-design/icons";
 import logo from "../images/saalla-5.png";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import "./index.css";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   render() {
     return (
       <Sider>
@@ -22,18 +22,22 @@ export default class Navbar extends Component {
             <img alt="logo" src={logo} style={{ width: "100%" }} />
           </Link>
         </div>
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={[this.props.match.path]}
+          mode="inline"
+        >
+          <Menu.Item key="/dashboard" icon={<PieChartOutlined />}>
             <Link to="/dashboard">Anasayfa</Link>
           </Menu.Item>
 
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Kullanıcılar">
+          <SubMenu key="/users" icon={<UserOutlined />} title="Kullanıcılar">
             <Menu.Item key="2">
               <Link to="/users">Tüm Kullanıcılar</Link>
             </Menu.Item>
           </SubMenu>
           <SubMenu
-            key="sub2"
+            key="/communities"
             icon={<TeamOutlined />}
             title="Topluluk İşlemleri"
           >
@@ -41,7 +45,11 @@ export default class Navbar extends Component {
               <Link to="/communities">Tüm Topluluklar</Link>
             </Menu.Item>
           </SubMenu>
-          <SubMenu key="sub3" icon={<BarsOutlined />} title="Kategoriler">
+          <SubMenu
+            key="/categories"
+            icon={<BarsOutlined />}
+            title="Kategoriler"
+          >
             <Menu.Item key="4">
               <Link to="/categories">Tüm Kategoriler</Link>
             </Menu.Item>
@@ -51,3 +59,4 @@ export default class Navbar extends Component {
     );
   }
 }
+export default withRouter(Navbar);
