@@ -31,3 +31,6 @@
  .ant-form-horizontal {
     margin-top: 10vh;
   }
+  .dashboard-card {
+    border-radius: 10px;
+  }

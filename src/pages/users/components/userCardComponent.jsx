@@ -22,7 +22,7 @@ class UserCardComponent extends Component {
     });
   };
   render() {
-    const { username, bio, profileImagePath } = this.props;
+    const { username, bio, profileImagePath, emailAddress } = this.props;
 
     return (
       <Card
@@ -57,7 +57,7 @@ class UserCardComponent extends Component {
             />
           }
           title={username}
-          description={bio}
+          description={emailAddress}
         />
         <UserDetailDrawer
           showDrawer={this.showDrawer}

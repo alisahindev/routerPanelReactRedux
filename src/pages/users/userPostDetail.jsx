@@ -68,7 +68,8 @@ class UserPostDetail extends Component {
                   </Link>
                 }
               />
-              {item.content}
+
+              <p dangerouslySetInnerHTML={{ __html: item.content }} />
             </List.Item>
           )}
         />
