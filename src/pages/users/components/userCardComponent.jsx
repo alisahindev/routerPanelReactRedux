@@ -3,7 +3,6 @@ import { Card, Avatar } from "antd";
 import { SettingOutlined, EyeFilled } from "@ant-design/icons";
 import UserDetailDrawer from "./userDetailDrawer";
 import { Link } from "react-router-dom";
-import randomColor from "randomcolor";
 
 const { Meta } = Card;
 class UserCardComponent extends Component {
@@ -24,7 +23,6 @@ class UserCardComponent extends Component {
 
   render() {
     const { username, profileImagePath, emailAddress } = this.props;
-    const color = randomColor();
     return (
       <Card
         style={{
@@ -32,11 +30,12 @@ class UserCardComponent extends Component {
           maxHeight: 700,
           marginTop: "1rem",
           borderRadius: "1rem",
-          backgroundColor: `${color}`,
+          backgroundColor: "#fff",
         }}
         cover={
           <Avatar
-            size={300}
+            style={{ marginTop: "5px" }}
+            size={200}
             alt={username}
             src={
               profileImagePath
