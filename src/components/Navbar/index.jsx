@@ -7,51 +7,53 @@ import {
   BarsOutlined,
 } from "@ant-design/icons";
 import logo from "../images/saalla-5.png";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import "./index.css";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 class Navbar extends Component {
+  state = {
+    collapsed: false,
+  };
+  onCollapse = (collapsed) => {
+    this.setState({ collapsed });
+  };
   render() {
     return (
-      <Sider>
+      <Sider
+        collapsible
+        collapsed={this.state.collapsed}
+        onCollapse={this.onCollapse}
+      >
         <div className="logo">
-          <Link className="logo" to="/">
+          <NavLink className="logo" to="/">
             <img alt="logo" src={logo} style={{ width: "100%" }} />
-          </Link>
+          </NavLink>
         </div>
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={[this.props.match.path]}
-          mode="inline"
-        >
-          <Menu.Item key="/dashboard" icon={<PieChartOutlined />}>
-            <Link to="/dashboard">Anasayfa</Link>
+        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+          <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <NavLink to="/dashboard">Anasayfa</NavLink>
           </Menu.Item>
 
-          <SubMenu key="/users" icon={<UserOutlined />} title="Kullanıcılar">
+          <SubMenu key="sub1" icon={<UserOutlined />} title="Kullanıcılar">
             <Menu.Item key="2">
-              <Link to="/users">Tüm Kullanıcılar</Link>
+              <NavLink to="/users">Tüm Kullanıcılar</NavLink>
             </Menu.Item>
           </SubMenu>
           <SubMenu
-            key="/communities"
+            key="sub2"
             icon={<TeamOutlined />}
             title="Topluluk İşlemleri"
           >
             <Menu.Item key="3">
-              <Link to="/communities">Tüm Topluluklar</Link>
+              <NavLink to="/communities">Tüm Topluluklar</NavLink>
             </Menu.Item>
           </SubMenu>
-          <SubMenu
-            key="/categories"
-            icon={<BarsOutlined />}
-            title="Kategoriler"
-          >
+          <SubMenu key="sub3" icon={<BarsOutlined />} title="Kategoriler">
             <Menu.Item key="4">
-              <Link to="/categories">Tüm Kategoriler</Link>
+              <NavLink to="/categories">Tüm Kategoriler</NavLink>
             </Menu.Item>
           </SubMenu>
         </Menu>
