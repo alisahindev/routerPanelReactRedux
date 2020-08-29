@@ -3,9 +3,9 @@ import { Card, Avatar } from "antd";
 import { SettingOutlined, EyeFilled } from "@ant-design/icons";
 import UserDetailDrawer from "./userDetailDrawer";
 import { Link } from "react-router-dom";
+import randomColor from "randomcolor";
 
 const { Meta } = Card;
-
 class UserCardComponent extends Component {
   state = {
     visible: false,
@@ -21,15 +21,22 @@ class UserCardComponent extends Component {
       visible: false,
     });
   };
-  render() {
-    const { username, bio, profileImagePath, emailAddress } = this.props;
 
+  render() {
+    const { username, profileImagePath, emailAddress } = this.props;
+    const color = randomColor();
     return (
       <Card
-        style={{ width: 300, maxHeight: 700, marginTop: "1rem" }}
+        style={{
+          width: 300,
+          maxHeight: 700,
+          marginTop: "1rem",
+          borderRadius: "1rem",
+          backgroundColor: `${color}`,
+        }}
         cover={
-          <img
-            style={{ width: 300, height: 300 }}
+          <Avatar
+            size={300}
             alt={username}
             src={
               profileImagePath
