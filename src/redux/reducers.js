@@ -8,6 +8,7 @@ import users from "./users/reducer";
 import selectedUser from "./users/selectedUserReducer";
 import auth from "./auth/reducer";
 import userPosts from "./posts/reducer";
+import loaderReducer from "./loader/reducer";
 
 export default (history) =>
   combineReducers({
@@ -20,4 +21,5 @@ export default (history) =>
     allUsers: users,
     auth,
     userPosts,
+    loader: loaderReducer,
   });

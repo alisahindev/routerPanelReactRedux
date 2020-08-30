@@ -16,31 +16,37 @@ import {
   UPDATE_COMMUNITY_FAILURE,
 } from "./action";
 import { readLocalStorage } from "../../helpers";
+import { LOADER_START, LOADER_END } from "../loader/action";
 
 function* getCommunitiesSaga({ payload }) {
   try {
+    yield put({ type: LOADER_START });
     const response = yield call(Get, "/community/get-all", {}, {}, false);
     if (response && response.length > 0) {
       yield put({
         type: GET_ALL_COMMUNITIES_SUCCESS,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     } else {
       yield put({
         type: GET_ALL_COMMUNITIES_FAILURE,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     }
   } catch (error) {
     yield put({
       type: GET_ALL_COMMUNITIES_FAILURE,
       payload: error,
     });
+    yield put({ type: LOADER_END });
   }
 }
 
 function* createCommunitySaga({ payload }) {
   try {
+    yield put({ type: LOADER_START });
     const response = yield call(
       Post,
       "/community/create-community",
@@ -54,24 +60,26 @@ function* createCommunitySaga({ payload }) {
         payload: response,
       });
       yield put(getAllCommunitiesRequest());
+      yield put({ type: LOADER_END });
     } else {
       yield put({
         type: CREATE_COMMUNITY_FAILURE,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     }
   } catch (error) {
     yield put({
       type: CREATE_COMMUNITY_FAILURE,
       payload: error,
     });
+    yield put({ type: LOADER_END });
   }
 }
 
 function* updateCommunitySaga({ payload }) {
-  debugger;
-
   try {
+    yield put({ type: LOADER_START });
     const token = readLocalStorage("loginData").token;
     const response = yield call(
       PutFormData,
@@ -85,23 +93,27 @@ function* updateCommunitySaga({ payload }) {
         type: UPDATE_COMMUNITY_SUCCESS,
         payload: response,
       });
+      yield put({ type: LOADER_END });
       yield put(getCommunityDetail(payload.slug));
     } else {
       yield put({
         type: UPDATE_COMMUNITY_FAILURE,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     }
   } catch (error) {
     yield put({
       type: UPDATE_COMMUNITY_FAILURE,
       payload: error,
     });
+    yield put({ type: LOADER_END });
   }
 }
 
 function* getCommunityDetail({ payload }) {
   try {
+    yield put({ type: LOADER_START });
     const response = yield call(
       Get,
       `/community/get?slug=${payload}`,
@@ -114,17 +126,20 @@ function* getCommunityDetail({ payload }) {
         type: GET_COMMUNITY_DETAIL_SUCCESS,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     } else {
       yield put({
         type: GET_COMMUNITY_DETAIL_FAILURE,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     }
   } catch (error) {
     yield put({
       type: GET_COMMUNITY_DETAIL_FAILURE,
       payload: error,
     });
+    yield put({ type: LOADER_END });
   }
 }
 

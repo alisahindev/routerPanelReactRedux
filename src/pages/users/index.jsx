@@ -28,12 +28,14 @@ class Users extends Component {
     return (
       <div className="userCard">
         <Row gutter={[24, 24]}>
-          <Col span={24}>
-            <Form>
-              <Form.Item onChange={this.onChange} label="Kullanıcı Ara">
-                <Input placeholder="Aramak istediğiniz kullanıcı adını girin" />
-              </Form.Item>
-            </Form>
+          <Col span={22}>
+            <Form.Item
+              style={{ marginTop: "1rem", marginBottom: "-1rem" }}
+              onChange={this.onChange}
+              label="Kullanıcı Ara"
+            >
+              <Input placeholder="Aramak istediğiniz kullanıcı adını girin" />
+            </Form.Item>
           </Col>
           {filteredUsers.length === 0
             ? users &&

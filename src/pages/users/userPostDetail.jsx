@@ -29,7 +29,6 @@ class UserPostDetail extends Component {
   render() {
     const { userPost, user } = this.props;
     const { previewModalVisible, logoPath } = this.state;
-    console.log(userPost, user);
     return (
       <div>
         <div>

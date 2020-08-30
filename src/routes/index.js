@@ -3,23 +3,34 @@ import { Switch } from "react-router-dom";
 import LoginPage from "../pages/login";
 import Route from "./route";
 import { mainRoutes } from "./route.config";
+import Loading from "../components/loader/index";
+import { connect } from "react-redux";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-export default function Routes() {
+function Routes(props) {
   return (
-    <Switch>
-      <Route path="/" exact component={LoginPage} />
+    <>
+      {props.loader.loading && <Loading />}
+      <Switch>
+        <Route path="/" exact component={LoginPage} />
 
-      {mainRoutes.map((route) => (
-        <Route
-          key={route.path}
-          component={route.component}
-          path={route.path}
-          isPrivate={route.isPrivate}
-        />
-      ))}
+        {mainRoutes.map((route) => (
+          <Route
+            key={route.path}
+            component={route.component}
+            path={route.path}
+            isPrivate={route.isPrivate}
+          />
+        ))}
 
-      {/* redirect user to SignIn page if route does not exist and user is not authenticated */}
-      <Route component={LoginPage} />
-    </Switch>
+        {/* redirect user to SignIn page if route does not exist and user is not authenticated */}
+        <Route component={LoginPage} />
+      </Switch>
+    </>
   );
 }
+const mapStateToProps = (state) => ({
+  loader: state.loader,
+});
+
+export default connect(mapStateToProps)(Routes);

@@ -8,34 +8,41 @@ import {
   GET_USER_DETAIL_FAILURE,
   GET_USER_DETAIL_SUCCESS,
 } from "./action";
+import { LOADER_START, LOADER_END } from "../loader/action";
 
 import { token } from "../../common";
 import AlertNotify from "../../components/alerts/alertNotify";
 
 function* getUsersSaga({ payload }) {
   try {
+    yield put({ type: LOADER_START });
+
     const response = yield call(Get, "/admin/all-users", {}, token, false);
     if (response && response.length > 0) {
       yield put({
         type: GET_ALL_USERS_SUCCESS,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     } else {
       yield put({
         type: GET_ALL_USERS_FAILURE,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     }
   } catch (error) {
     yield put({
       type: GET_ALL_USERS_FAILURE,
       payload: error,
     });
+    yield put({ type: LOADER_END });
   }
 }
 
 function* getUserDetailSaga({ payload }) {
   try {
+    yield put({ type: LOADER_START });
     const response = yield call(
       Get,
       `/user/get?username=${payload}`,
@@ -48,12 +55,14 @@ function* getUserDetailSaga({ payload }) {
         type: GET_USER_DETAIL_SUCCESS,
         payload: response,
       });
+      yield put({ type: LOADER_END });
     } else {
       yield put({
         type: GET_USER_DETAIL_FAILURE,
         payload: response,
       });
       AlertNotify("Bir hata oluştu", `Lütfen tekrar deneyin`, "error");
+      yield put({ type: LOADER_END });
     }
   } catch (error) {
     yield put({
@@ -61,6 +70,7 @@ function* getUserDetailSaga({ payload }) {
       payload: error,
     });
     AlertNotify("Bir hata oluştu", `Lütfen tekrar deneyin`, "error");
+    yield put({ type: LOADER_END });
   }
 }
 
