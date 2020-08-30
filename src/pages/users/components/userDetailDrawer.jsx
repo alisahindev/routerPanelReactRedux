@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Drawer, Form, Button, Col, Row, Input, Select } from "antd";
 import moment from "moment";
+import localization from "moment/locale/tr";
 
 const { Option } = Select;
 
@@ -16,6 +17,7 @@ class UserDetailDrawer extends Component {
       id,
       gender,
     } = this.props;
+    const trDate = moment(createdDate).locale("tr", localization).format("lll");
     return (
       <>
         <Drawer
@@ -55,7 +57,7 @@ class UserDetailDrawer extends Component {
                 <Form.Item
                   name="createdDate"
                   label="Kayıt Tarihi"
-                  initialValue={moment(createdDate).format("lll")}
+                  initialValue={trDate}
                 >
                   <Input.TextArea />
                 </Form.Item>
