@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getAllUsersRequest } from "../../redux/users/action";
 import { getAllCommunitiesRequest } from "../../redux/communities/action";
 import DashboardListComponent from "./components/dashboardListComponent";
-import DashboardCardComponent from "./components/dashboardCardComponent";
 import DisplayInformationCard from "./components/displayInformationCard";
 import UserCardComponent from "../users/components/userCardComponent";
 import { Row, Col, Divider } from "antd";
@@ -54,10 +53,6 @@ class Dashboard extends Component {
             })}
         </Row>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          <Col className="gutter-row" span={12}>
-            <Divider orientation="left">Son kayıt olanlar</Divider>
-            <DashboardCardComponent users={data}></DashboardCardComponent>
-          </Col>
           <Col className="gutter-row" span={12}>
             <Divider orientation="left">Topluluklar</Divider>
             <DashboardListComponent

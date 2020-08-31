@@ -78,7 +78,6 @@
     color: var(--color-two);
     margin-right: 8px;
 }
-
-.loader-div{
- 
+.antd-pro-header-search-input {
+  width: 700px;
 }
