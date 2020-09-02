@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-const DisplayInformationCard = ({ users, communities }) => {
+const DisplayInformationCard = ({ users, communities, categories }) => {
   return (
     <div className="site-statistic-demo-card">
       <Row gutter={16}>
@@ -50,7 +50,7 @@ const DisplayInformationCard = ({ users, communities }) => {
             >
               <Statistic
                 title="Kategori Sayısı"
-                value={communities && communities.length}
+                value={categories && categories.length}
                 valueStyle={{ color: "#fff" }}
                 prefix={<AlignCenterOutlined />}
               />
@@ -65,7 +65,7 @@ const DisplayInformationCard = ({ users, communities }) => {
             >
               <Statistic
                 title="Toplam Gönderiler"
-                value={communities && communities.length}
+                value={null}
                 valueStyle={{ color: "#fff" }}
                 prefix={<MessageFilled />}
               />

@@ -26,7 +26,7 @@ class UserCardComponent extends Component {
     return (
       <Card
         style={{
-          width: 300,
+          width: 275,
           maxHeight: 700,
           marginTop: "1rem",
           borderRadius: "1rem",

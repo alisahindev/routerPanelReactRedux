@@ -9,16 +9,18 @@ const { Header } = Layout;
 
 function HeaderWrapper(props) {
   const { Option } = Select;
-  console.log(props);
   const history = useHistory();
   const [userQuery, setUserQuery] = React.useState("");
 
-  const handleSearchChange = (values) => {
-    console.log(values);
-    if (values) {
-      values.type == "community"
-        ? history.push(`/community/${values}`)
-        : history.push(`/users`);
+  const handleSearchChange = (name, obj) => {
+    console.log(name, obj);
+    if (obj.type) {
+      obj.type === "community"
+        ? history.push(`/community/${name}`)
+        : history.push({
+            pathname: "/users",
+            state: { name },
+          });
     } else {
       return;
     }
@@ -26,14 +28,20 @@ function HeaderWrapper(props) {
 
   const delayedQuery = useRef(_.debounce((q) => props.search({ text: q }), 500))
     .current;
+
   const onSearch = (value) => {
     setUserQuery(value);
     delayedQuery(value);
   };
+
   const options =
     props.searchData &&
     props.searchData.length > 0 &&
-    props.searchData.map((d) => <Option key={d.name}>{d.name}</Option>);
+    props.searchData.map((d) => (
+      <Option type={d.type} value={d.name} key={d.name}>
+        {d.name}
+      </Option>
+    ));
 
   return (
     <Header
@@ -48,7 +56,7 @@ function HeaderWrapper(props) {
         showArrow={false}
         filterOption={false}
         onSearch={onSearch}
-        onChange={handleSearchChange}
+        onSelect={handleSearchChange}
       >
         {options}
       </Select>

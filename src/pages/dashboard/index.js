@@ -6,17 +6,18 @@ import DashboardListComponent from "./components/dashboardListComponent";
 import DisplayInformationCard from "./components/displayInformationCard";
 import UserCardComponent from "../users/components/userCardComponent";
 import { Row, Col, Divider } from "antd";
+import { getAllCategoriesRequest } from "../../redux/categories/action";
 
 class Dashboard extends Component {
   componentDidMount() {
-    const { getUser } = this.props;
+    const { getUser, getCommunities, getCategories } = this.props;
     getUser();
-    const { getCommunities } = this.props;
     getCommunities();
+    getCategories();
   }
 
   render() {
-    const { users, communities } = this.props;
+    const { users, communities, categories } = this.props;
     const data =
       users && users.length > 0 && users.slice(users.length - 4, users.length);
 
@@ -28,6 +29,7 @@ class Dashboard extends Component {
             <DisplayInformationCard
               communities={communities}
               users={users}
+              categories={categories}
             ></DisplayInformationCard>
           </Col>
         </Row>
@@ -67,11 +69,13 @@ class Dashboard extends Component {
 const mapDispatchToProps = (dispatch) => ({
   getUser: () => dispatch(getAllUsersRequest()),
   getCommunities: () => dispatch(getAllCommunitiesRequest()),
+  getCategories: () => dispatch(getAllCategoriesRequest()),
 });
 
 const mapStateToProps = (state) => ({
   users: state.allUsers.data,
   communities: state.allCommunities.data,
+  categories: state.allCategories.data,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

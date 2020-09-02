@@ -6,17 +6,6 @@ const initialState = {
   search: {},
 };
 
-export const handleNonPaginatedResult = (stateArray, responseArray) => {
-  for (let i = 0; i < stateArray.length; i++) {
-    for (let x = 0; x < responseArray.length; x++) {
-      if (stateArray[i].id === responseArray[x].id) {
-        stateArray[i] = responseArray[x];
-      }
-    }
-  }
-  return stateArray;
-};
-
 export default function (state = initialState, { type, payload }) {
   switch (type) {
     case SEARCH_REQUEST:
