@@ -24,9 +24,8 @@ function HeaderWrapper(props) {
     }
   };
 
-  const delayedQuery = useRef(
-    _.debounce((q) => props.search({ text: q }), 1000)
-  ).current;
+  const delayedQuery = useRef(_.debounce((q) => props.search({ text: q }), 500))
+    .current;
   const onSearch = (value) => {
     setUserQuery(value);
     delayedQuery(value);
@@ -34,11 +33,7 @@ function HeaderWrapper(props) {
   const options =
     props.searchData &&
     props.searchData.length > 0 &&
-    props.searchData.map((d) => (
-      <Option key={d.name} type={d.type}>
-        {d.name}
-      </Option>
-    ));
+    props.searchData.map((d) => <Option key={d.name}>{d.name}</Option>);
 
   return (
     <Header
@@ -48,7 +43,7 @@ function HeaderWrapper(props) {
       <Select
         showSearch
         placeholder="Kullanıcı ve topluluk ara"
-        style={{ width: 200 }}
+        style={{ width: "50%", justifyContent: "center" }}
         defaultActiveFirstOption={false}
         showArrow={false}
         filterOption={false}

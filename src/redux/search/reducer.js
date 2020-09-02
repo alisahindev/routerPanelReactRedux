@@ -3,7 +3,7 @@ import { SEARCH_FAILURE, SEARCH_REQUEST, SEARCH_SUCCESS } from "./action";
 const initialState = {
   data: { results: [] },
   error: null,
-  search: null,
+  search: {},
 };
 
 export const handleNonPaginatedResult = (stateArray, responseArray) => {
