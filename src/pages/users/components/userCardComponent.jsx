@@ -41,7 +41,7 @@ class UserCardComponent extends Component {
             src={
               profileImagePath
                 ? `https://saallaaccount.blob.core.windows.net/saallacontainer/${profileImagePath}`
-                : "https://upload.wikimedia.org/wikipedia/tr/c/cc/Be%C5%9Fikta%C5%9F_Esports_logo.png"
+                : "planet.png"
             }
           />
         }
@@ -59,7 +59,7 @@ class UserCardComponent extends Component {
               src={
                 profileImagePath
                   ? `https://saallaaccount.blob.core.windows.net/saallacontainer/${profileImagePath}`
-                  : "https://upload.wikimedia.org/wikipedia/tr/c/cc/Be%C5%9Fikta%C5%9F_Esports_logo.png"
+                  : "planet.png"
               }
             />
           }

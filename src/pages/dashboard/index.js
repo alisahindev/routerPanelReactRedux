@@ -7,6 +7,7 @@ import DisplayInformationCard from "./components/displayInformationCard";
 import UserCardComponent from "../users/components/userCardComponent";
 import { Row, Col, Divider } from "antd";
 import { getAllCategoriesRequest } from "../../redux/categories/action";
+import DashboardCardComponent from "./components/dashboardCardComponent";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -57,9 +58,14 @@ class Dashboard extends Component {
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row" span={12}>
             <Divider orientation="left">Topluluklar</Divider>
-            <DashboardListComponent
-              communities={communities}
-            ></DashboardListComponent>
+            <DashboardListComponent communities={communities} />
+          </Col>
+          <Col className="gutter-row" span={12}>
+            <Row justify="space-around" gutter={[16, 16]}>
+              <Divider orientation="left">Kategoriler</Divider>
+
+              <DashboardCardComponent categories={categories} />
+            </Row>
           </Col>
         </Row>
       </div>

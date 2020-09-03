@@ -101,7 +101,9 @@ class CommunityDetail extends Component {
               <Form.Item key="logoPath" label="Logo">
                 <Avatar
                   size={250}
-                  src={detailCommunity && detailCommunity.logoPath}
+                  src={
+                    detailCommunity ? detailCommunity.logoPath : "planet.png"
+                  }
                   icon={<UserOutlined />}
                 />
                 <Button
@@ -141,7 +143,11 @@ class CommunityDetail extends Component {
                           <Avatar
                             size={150}
                             alt={member.username}
-                            src={member.profileImg}
+                            src={
+                              member.profileImg
+                                ? member.profileImg
+                                : "planet.png"
+                            }
                           />
                         }
                       >
@@ -174,7 +180,11 @@ class CommunityDetail extends Component {
                             <Avatar
                               size={150}
                               alt={member.username}
-                              src={member.profileImg}
+                              src={
+                                member.profileImg
+                                  ? member.profileImg
+                                  : "planet.png"
+                              }
                             />
                           }
                         >

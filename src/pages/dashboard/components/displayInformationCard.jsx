@@ -65,7 +65,7 @@ const DisplayInformationCard = ({ users, communities, categories }) => {
             >
               <Statistic
                 title="Toplam Gönderiler"
-                value={null}
+                value="116"
                 valueStyle={{ color: "#fff" }}
                 prefix={<MessageFilled />}
               />

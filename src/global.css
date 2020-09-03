@@ -81,3 +81,39 @@
 .antd-pro-header-search-input {
   width: 700px;
 }
+.dashboard-category-card:hover {
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+}
+.login-page {
+	background-color: white;
+	background-color: #21D4FD;
+	background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+  	height: 100vh;
+}
+.login-form{
+  min-width: 250px;
+  max-width: 400px;
+  border-radius: 24px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.login-button {
+  background-color:  #E0E0E0;
+	background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+	width: 100%;
+	color: white;
+  	border: none;
+	margin-top: 10px;
+  	cursor: pointer;
+  	font-size: 1.3rem;
+	font-weight: bold;
+	border-radius: 24px;
+	transition: 0.25s;
+}
+
+.login-button:hover {
+	opacity: 0.8;
+}

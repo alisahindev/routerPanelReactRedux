@@ -82,7 +82,7 @@ class Communities extends Component {
             style={{ cursor: "pointer" }}
             onClick={this.handlePreviewModalVisible}
             size={64}
-            src={logoPath}
+            src={logoPath ? logoPath : "planet.png"}
           />
         ),
       },

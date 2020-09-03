@@ -1,35 +1,32 @@
 import React, { Component } from "react";
-import { List, Avatar } from "antd";
+import { Card, Col } from "antd";
 import { Link } from "react-router-dom";
-
 class DashboardCardComponent extends Component {
   render() {
-    const { users } = this.props;
+    const { categories } = this.props;
+    console.log(categories);
     return (
-      <div>
-        <List
-          dataSource={users || []}
-          size="large"
-          renderItem={(item) => (
-            <List.Item key={item.username}>
-              <List.Item.Meta
-                avatar={
-                  <Avatar
-                    src={
-                      item.profileImagePath
-                        ? `https://saallaaccount.blob.core.windows.net/saallacontainer/${item.profileImagePath}`
-                        : "https://upload.wikimedia.org/wikipedia/tr/c/cc/Be%C5%9Fikta%C5%9F_Esports_logo.png"
-                    }
-                  />
-                }
-                title={<Link to="/users">{item.username}</Link>}
-                description={item.emailAddress}
-              />
-              {item.bio}
-            </List.Item>
-          )}
-        />
-      </div>
+      <>
+        {categories &&
+          categories.length > 0 &&
+          categories.map((category) => {
+            return (
+              <Col span={6}>
+                <Link to={`/category/${category.slug}`}>
+                  <Card
+                    className="dashboard-category-card"
+                    style={{
+                      borderRadius: 10,
+                      boxShadow: 1,
+                    }}
+                  >
+                    <span>{category.displayName}</span>
+                  </Card>
+                </Link>
+              </Col>
+            );
+          })}
+      </>
     );
   }
 }
