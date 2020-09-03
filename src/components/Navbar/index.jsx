@@ -29,6 +29,7 @@ class Navbar extends Component {
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={this.onCollapse}
+        collapsedWidth="0"
       >
         <div className="logo">
           <NavLink className="logo" to="/">

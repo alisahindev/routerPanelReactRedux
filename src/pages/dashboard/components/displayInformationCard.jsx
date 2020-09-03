@@ -11,8 +11,8 @@ import { Link } from "react-router-dom";
 const DisplayInformationCard = ({ users, communities, categories }) => {
   return (
     <div className="site-statistic-demo-card">
-      <Row gutter={16}>
-        <Col span={6}>
+      <Row gutter={[48, 16]}>
+        <Col xs={20} sm={16} md={12} lg={6}>
           <Link to="/users">
             <Card
               style={{ backgroundColor: "#e91e63" }}
@@ -27,7 +27,7 @@ const DisplayInformationCard = ({ users, communities, categories }) => {
             </Card>
           </Link>
         </Col>
-        <Col span={6}>
+        <Col xs={20} sm={16} md={12} lg={6}>
           <Link to="/communities">
             <Card
               style={{ backgroundColor: "#00bcd4" }}
@@ -42,7 +42,7 @@ const DisplayInformationCard = ({ users, communities, categories }) => {
             </Card>
           </Link>
         </Col>
-        <Col span={6}>
+        <Col xs={20} sm={16} md={12} lg={6}>
           <Link to="/categories">
             <Card
               style={{ backgroundColor: "#8bc34a" }}
@@ -57,7 +57,7 @@ const DisplayInformationCard = ({ users, communities, categories }) => {
             </Card>
           </Link>
         </Col>
-        <Col span={6}>
+        <Col xs={20} sm={16} md={12} lg={6}>
           <Link>
             <Card
               style={{ backgroundColor: "#ff9800" }}

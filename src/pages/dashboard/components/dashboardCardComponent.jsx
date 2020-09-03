@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 class DashboardCardComponent extends Component {
   render() {
     const { categories } = this.props;
-    console.log(categories);
     return (
       <>
         {categories &&

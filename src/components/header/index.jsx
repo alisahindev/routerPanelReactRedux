@@ -13,7 +13,6 @@ function HeaderWrapper(props) {
   const [userQuery, setUserQuery] = React.useState("");
 
   const handleSearchChange = (name, obj) => {
-    console.log(name, obj);
     if (obj.type) {
       obj.type === "community"
         ? history.push(`/community/${name}`)

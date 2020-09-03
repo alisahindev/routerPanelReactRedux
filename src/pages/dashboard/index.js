@@ -34,13 +34,20 @@ class Dashboard extends Component {
             ></DisplayInformationCard>
           </Col>
         </Row>
-        <Row>
+        <Row justify="space-around" gutter={[48, 16]}>
           <Divider orientation="left">Son Kayıt Olan 5 Kullanıcı</Divider>
           {data &&
             data.length > 0 &&
             data.map((user) => {
               return (
-                <Col className="gutter-row" span={6}>
+                <Col
+                  className="gutter-row"
+                  xs={20}
+                  sm={16}
+                  md={12}
+                  lg={8}
+                  xl={6}
+                >
                   <UserCardComponent
                     username={user.username}
                     profileImagePath={user.profileImagePath}
@@ -56,11 +63,11 @@ class Dashboard extends Component {
             })}
         </Row>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-          <Col className="gutter-row" span={12}>
+          <Col className="gutter-row" xs={20} sm={16} md={12}>
             <Divider orientation="left">Topluluklar</Divider>
             <DashboardListComponent communities={communities} />
           </Col>
-          <Col className="gutter-row" span={12}>
+          <Col className="gutter-row" xs={20} sm={16} md={12}>
             <Row justify="space-around" gutter={[16, 16]}>
               <Divider orientation="left">Kategoriler</Divider>
 

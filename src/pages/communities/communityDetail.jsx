@@ -15,7 +15,7 @@ class CommunityDetail extends Component {
 
   state = {
     minValue: 0,
-    maxValue: 2,
+    maxValue: 4,
   };
   componentDidMount() {
     const slug = this.props.match.params.slug;
@@ -38,12 +38,12 @@ class CommunityDetail extends Component {
   };
 
   render() {
-    const numEachPage = 2;
+    const numEachPage = 4;
     const handleChange = (value) => {
       if (value <= 1) {
         this.setState({
           minValue: 0,
-          maxValue: 2,
+          maxValue: 4,
         });
       } else {
         this.setState({
@@ -67,149 +67,134 @@ class CommunityDetail extends Component {
     } = this.props;
     const { detailCommunity } = this.props;
     return (
-      <>
-        <Row>
-          <Col
-            span={12}
-            xs={{ order: 4 }}
-            sm={{ order: 3 }}
-            md={{ order: 1 }}
-            lg={{ order: 2 }}
-          >
-            <Divider orientation="left">
-              Topluluk Bilgisi - {detailCommunity.name}
-            </Divider>
-            <Form onFinish={this.onFinish} ref={this.formRef} {...layout}>
-              <Form.Item key="name" name="name" label="Topluluk Adı">
-                <Input placeholder="Topluluk Adı" />
-              </Form.Item>
-              <Form.Item key="slug" name="slug" label="Topluluk Slug">
-                <Input placeholder="Topluluk Slug" />
-              </Form.Item>
-              <Form.Item key="description" name="description" label="Açıklama">
-                <Input.TextArea placeholder="Topluluk açıklaması" />
-              </Form.Item>
+      <Row gutter={[16, 16]}>
+        <Col xs={20} sm={16} md={12}>
+          <Divider orientation="left">
+            Topluluk Bilgisi - {detailCommunity.name}
+          </Divider>
+          <Form onFinish={this.onFinish} ref={this.formRef} {...layout}>
+            <Form.Item key="name" name="name" label="Topluluk Adı">
+              <Input placeholder="Topluluk Adı" />
+            </Form.Item>
+            <Form.Item key="slug" name="slug" label="Topluluk Slug">
+              <Input placeholder="Topluluk Slug" />
+            </Form.Item>
+            <Form.Item key="description" name="description" label="Açıklama">
+              <Input.TextArea placeholder="Topluluk açıklaması" />
+            </Form.Item>
 
-              <Form.Item
-                key="createdDate"
-                name="createdDate"
-                label="Oluşturulma Tarihi"
+            <Form.Item
+              key="createdDate"
+              name="createdDate"
+              label="Oluşturulma Tarihi"
+            >
+              <Input placeholder="Oluşturulma tarihi" />
+            </Form.Item>
+
+            <Form.Item key="logoPath" label="Logo">
+              <Avatar
+                size={250}
+                src={detailCommunity ? detailCommunity.logoPath : "planet.png"}
+                icon={<UserOutlined />}
+              />
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+                style={{ marginLeft: "3rem" }}
+                type="primary"
+                htmlType="submit"
               >
-                <Input placeholder="Oluşturulma tarihi" />
-              </Form.Item>
+                Güncelle
+              </Button>
+            </Form.Item>
+          </Form>
+        </Col>
 
-              <Form.Item key="logoPath" label="Logo">
-                <Avatar
-                  size={250}
-                  src={
-                    detailCommunity ? detailCommunity.logoPath : "planet.png"
-                  }
-                  icon={<UserOutlined />}
-                />
-                <Button
-                  style={{ marginLeft: "3rem" }}
-                  type="primary"
-                  htmlType="submit"
-                >
-                  Güncelle
-                </Button>
-              </Form.Item>
-            </Form>
-          </Col>
-          <Col
-            span={12}
-            xs={{ order: 4 }}
-            sm={{ order: 3 }}
-            md={{ order: 1 }}
-            lg={{ order: 2 }}
-          >
-            <Divider orientation="left">
-              Moderatörler - {detailCommunity.name}
-            </Divider>
-            <Row gutter={[48, 16]}>
-              {moderators &&
-                moderators.length > 0 &&
-                moderators.map((member) => {
-                  return (
-                    <Col span={12}>
-                      <Card
-                        hoverable
-                        style={{
-                          width: 250,
-                          paddingTop: "1rem",
-                          borderRadius: "15px",
-                        }}
-                        cover={
-                          <Avatar
-                            size={150}
-                            alt={member.username}
-                            src={
-                              member.profileImg
-                                ? member.profileImg
-                                : "planet.png"
-                            }
-                          />
+        <Col xs={20} sm={16} md={12}>
+          <Divider orientation="left">
+            Moderatörler - {detailCommunity.name}
+          </Divider>
+          {moderators &&
+            moderators.length > 0 &&
+            moderators.map((member) => {
+              return (
+                <Col span={12} xs={12} sm={6} md={6}>
+                  <Card
+                    hoverable
+                    style={{
+                      width: 250,
+                      paddingTop: "1rem",
+                      borderRadius: "15px",
+                    }}
+                    cover={
+                      <Avatar
+                        size={150}
+                        alt={member.username}
+                        src={
+                          member.profileImg ? member.profileImg : "planet.png"
                         }
-                      >
-                        <Meta
-                          style={{ textAlign: "center" }}
-                          title={member.username}
-                        />
-                      </Card>
-                    </Col>
-                  );
-                })}
-              <Divider orientation="left">
-                Üyeler - {detailCommunity.name}
-              </Divider>
-              {members &&
-                members.length > 0 &&
-                members
-                  .slice(this.state.minValue, this.state.maxValue)
-                  .map((member) => {
-                    return (
-                      <Col span={12}>
-                        <Card
-                          hoverable
-                          style={{
-                            width: 250,
-                            paddingTop: "1rem",
-                            borderRadius: "15px",
-                          }}
-                          cover={
-                            <Avatar
-                              size={150}
-                              alt={member.username}
-                              src={
-                                member.profileImg
-                                  ? member.profileImg
-                                  : "planet.png"
-                              }
-                            />
+                      />
+                    }
+                  >
+                    <Meta
+                      style={{ textAlign: "center" }}
+                      title={member.username}
+                    />
+                  </Card>
+                </Col>
+              );
+            })}
+        </Col>
+        <Row>
+          <Divider orientation="left">Üyeler - {detailCommunity.name}</Divider>
+          {members &&
+            members.length > 0 &&
+            members
+              .slice(this.state.minValue, this.state.maxValue)
+              .map((member) => {
+                return (
+                  <Col xs={20} sm={16} md={12} lg={6}>
+                    <Card
+                      hoverable
+                      style={{
+                        width: 250,
+                        paddingTop: "1rem",
+                        borderRadius: "15px",
+                      }}
+                      cover={
+                        <Avatar
+                          size={150}
+                          alt={member.username}
+                          src={
+                            member.profileImg ? member.profileImg : "planet.png"
                           }
-                        >
-                          <Meta
-                            style={{ textAlign: "center" }}
-                            title={member.username}
-                          />
-                        </Card>
-                      </Col>
-                    );
-                  })}
-              <Divider>
-                <Pagination
-                  defaultCurrent={1}
-                  defaultPageSize={2} //default size of page
-                  onChange={handleChange}
-                  total={
-                    members && members.length > 0 && Math.floor(members.length)
-                  } //total number of card data available
-                />
-              </Divider>
-            </Row>
+                        />
+                      }
+                    >
+                      <Meta
+                        style={{ textAlign: "center" }}
+                        title={member.username}
+                      />
+                    </Card>
+                  </Col>
+                );
+              })}
+
+          <Col xs={6} sm={6}>
+            <Divider orientation="left">
+              <Pagination
+                defaultCurrent={1}
+                defaultPageSize={4} //default size of page
+                onChange={handleChange}
+                total={
+                  members && members.length > 0 && Math.floor(members.length)
+                } //total number of card data available
+              />
+            </Divider>
           </Col>
         </Row>
-      </>
+      </Row>
     );
   }
 }

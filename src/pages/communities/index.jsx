@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Button } from "antd";
+import { Table, Button, Col, Row, Divider } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Avatar from "antd/lib/avatar/avatar";
 import ImageModal from "./components/imageModal";
@@ -89,32 +89,38 @@ class Communities extends Component {
     ];
 
     return (
-      <>
-        <div>
-          <Button
-            style={{ borderRadius: "10px" }}
-            type="primary"
-            className="table_up_button"
-            onClick={() => this.setState({ visible: true })}
-          >
-            Topluluk Ekle
-          </Button>
-        </div>
-        <Table columns={columns} dataSource={data && data.length > 0 && data} />
-        <ImageModal
-          visible={previewModalVisible}
-          imgPath={logoPath}
-          title="Topluluk logosu"
-          onOk={this.handlePreviewModalVisible}
-          onCancel={this.handlePreviewModalVisible}
-        />
-        <CreateCommunityModal
-          title="Topluluk Oluştur"
-          onOk={this.onSubmit}
-          onCancel={() => this.setState({ visible: false })}
-          visible={this.state.visible}
-        ></CreateCommunityModal>
-      </>
+      <Row gutter={[48, 16]}>
+        <Col xs={8} sm={16} md={24}>
+          <Divider orientation="right">
+            <Button
+              style={{ borderRadius: "10px" }}
+              type="primary"
+              className="table_up_button"
+              onClick={() => this.setState({ visible: true })}
+            >
+              Topluluk Ekle
+            </Button>
+          </Divider>
+
+          <Table
+            columns={columns}
+            dataSource={data && data.length > 0 && data}
+          />
+          <ImageModal
+            visible={previewModalVisible}
+            imgPath={logoPath}
+            title="Topluluk logosu"
+            onOk={this.handlePreviewModalVisible}
+            onCancel={this.handlePreviewModalVisible}
+          />
+          <CreateCommunityModal
+            title="Topluluk Oluştur"
+            onOk={this.onSubmit}
+            onCancel={() => this.setState({ visible: false })}
+            visible={this.state.visible}
+          ></CreateCommunityModal>
+        </Col>
+      </Row>
     );
   }
 }
